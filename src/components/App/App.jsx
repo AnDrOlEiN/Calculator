@@ -1,26 +1,30 @@
-import React from 'react';
-import Home from '../../pages/Home/Home';
+import React, { lazy, Suspense } from 'react';
 import Header from '../Header/Header';
 import Container from '../Container/Container';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { HOME_PAGE_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants/router';
-import Settings from '@/pages/Settings/Settings';
+import Loading from '../Loading/Loading';
 
 import { StyledApp } from './components';
 
+const HomePage = lazy(() => import('@/pages/Home/Home'));
+const SettingsPage = lazy(() => import('@/pages/Settings/Settings'));
+
 const App = () => (
-  <StyledApp>
-    <Header />
-    <main style={{ padding: '20px 0px' }}>
-      <Container>
-        <Switch>
-          <Route exact path={HOME_PAGE_ROUTE} component={Home} />
-          <Route path={SETTINGS_PAGE_ROUTE} component={Settings} />
-          <Redirect to={HOME_PAGE_ROUTE} />
-        </Switch>
-      </Container>
-    </main>
-  </StyledApp>
+  <Suspense fallback={<Loading />}>
+    <StyledApp>
+      <Header />
+      <main style={{ padding: '20px 0px' }}>
+        <Container>
+          <Switch>
+            <Route exact path={HOME_PAGE_ROUTE} component={HomePage} />
+            <Route path={SETTINGS_PAGE_ROUTE} component={SettingsPage} />
+            <Redirect to={HOME_PAGE_ROUTE} />
+          </Switch>
+        </Container>
+      </main>
+    </StyledApp>
+  </Suspense>
 
 )
 
