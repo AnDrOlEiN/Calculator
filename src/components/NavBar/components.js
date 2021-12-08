@@ -23,6 +23,10 @@ export const StyledWrapperLink = styled.div`
     color: #999999;
     font-size: 18px;
 
+    &:hover {
+      color: #000;
+    }
+
     &:last-child {
       margin-right: 0px;
     }
@@ -33,5 +37,9 @@ export const StyledLinkElem = styled(NavLink)`
   &.active {
     color: #fff;
     border-bottom: 2px solid #fff;
+
+    &:hover {
+      color: #fff;
+    }
   }
 `
