@@ -46,8 +46,7 @@
         "ignoreReadBeforeAssign": false
       }
     ],
-    "react/prop-types": "off",
-    "react/jsx-fragments": [1, "element"]
+    "react/prop-types": "off"
   },
   "overrides": [
     {

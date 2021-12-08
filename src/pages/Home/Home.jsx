@@ -1,23 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+import Loading from '../../components/Loading/Loading';
 
-// import { PageLayout } from '@/layouts';
-
-import Loader from '@/components/Loader';
-
-// import { Card, Heading } from './components';
+const StyledHome = styled.h1`
+  color: ${props => props.theme.colors.dark};
+`;
 
 const Home = () => {
   return (
-    <React.Fragment>
-      welcome Home
-      <Loader />
-    </React.Fragment>
-    // <PageLayout>
-    //   <Card>
-    //     <Heading id="welcome">Welcome!</Heading>
-    //     <Loader />
-    //   </Card>
-    // </PageLayout>
+    <>
+      <StyledHome>Welcome Home</StyledHome>
+      <Loading />
+    </>
   )
 }
 

@@ -1,36 +1,25 @@
 import { createGlobalStyle } from 'styled-components'
 
-import theme from './theme'
-
 export default createGlobalStyle`
-  * {
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-
-    font-family: ${theme.font};
-  }
-
-  html, body {
-    width: 100%;
-    height: 100%;
+    font-family: 'Roboto', sans-serif;
   }
 
   body {
-    & > #root {
-      width: 100%;
-      height: 100%;
-    }
+    background-color: #fff;
   }
 
-  body {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  #root {
-    display: flex;
-    background: linear-gradient(to bottom, #c06c84da, #6c5b7bda);
+  a {
+    display: inline-block;
+    text-decoration: none;
   }
 `
