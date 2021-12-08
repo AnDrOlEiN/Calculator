@@ -23,7 +23,7 @@
 
 #### Диаграмма компонентов:
 
-> ![diagramma of components](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/digrama_of_components.png?raw=true)
+> ![diagramma of components](doc/digrama_of_components.png?raw=true)
 
 #### Необходимый функционал:
 
@@ -50,13 +50,13 @@
 Ссылка на макет: [Макет "Калькулятор"](https://xd.adobe.com/view/3d64c8c6-a59f-4785-736f-6b50257b8e83-4b55/). Также макет можно найти в папке **doc** c расширением **.xd** для программы **Adobe XD**.
 
 
-> ![example_1](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/example_1.png?raw=true)
+> ![example_1](doc/example_1.png?raw=true)
 
 
-> ![example_2](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/example_2.png?raw=true)
+> ![example_2](doc/example_2.png?raw=true)
 
 
-> ![example_3](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/example_3.png?raw=true)
+> ![example_3](doc/example_3.png?raw=true)
 
 
 #### Также проект предполагает:
@@ -97,7 +97,7 @@
 
 #### Пример необходимой структуры проекта:
 
-> ![structure_1](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/structure_1.png?raw=true)
+> ![structure_1](doc/structure_1.png?raw=true)
 
 #### Пояснения к корневой папке:
 - ***.vscode*** - папка для конфигурационных файлов ***VS CODE***.
@@ -118,7 +118,7 @@
 
 #### Пример структуры react компонента:
 
-> ![structure_2](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/structure_2.png?raw=true)
+> ![structure_2](doc/structure_2.png?raw=true)
 
 #### Пояснение для структуры файлов компонента:
 - ***index.js*** - корневой файл для экспорта компонентов.
@@ -151,7 +151,7 @@
 3. Импортировать шаблон в свой репозиторий.
 4. Склонировать репозиторий на свою локальную машину.
 
-> ![template_1](https://github.com/slava-ovchinnikov/education-task-calculator/blob/master/doc/template.png?raw=true)
+> ![template_1](doc/template.png?raw=true)
 
 #### Запуск ESlint
 - Проверка eslint

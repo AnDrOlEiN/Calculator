@@ -10,7 +10,6 @@
   },
   "rules": {
     "arrow-parens": ["error", "as-needed"],
-    "semi": "error",
     "prefer-destructuring": "error",
     "max-len": [
       "warn",
