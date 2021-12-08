@@ -1,13 +1,9 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
-import styled from 'styled-components';
 
-const StyledLoader = styled.div`
-  margin-top: 25px; 
-  text-align: center;
-`;
+import { StyledLoader } from './components';
 
-const Loading = ({...props}) => {
+const Loading = () => {
   return (
     <StyledLoader>
       <Loader type="Oval" color="#000000"

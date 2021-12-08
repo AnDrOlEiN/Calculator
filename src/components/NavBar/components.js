@@ -11,6 +11,9 @@ export const StyledNav = styled.nav`
 
 export const StyledTitle = styled.h2`
   font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 0px;
 `;
 
 export const StyledWrapperLink = styled.div`
@@ -20,8 +23,8 @@ export const StyledWrapperLink = styled.div`
     color: #999999;
     font-size: 18px;
 
-    &:first-child {
-      margin-left: 0px;
+    &:last-child {
+      margin-right: 0px;
     }
   }
 `;

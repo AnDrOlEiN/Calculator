@@ -1,10 +1,14 @@
 import React from 'react';
+import SettingsControl from '@/components/SettingsContol/SettingsControl';
+
+import { StyledTitle } from './components';
 
 const Settings = () => {
   return (
-    <div>
-      Settings page
-    </div>
+    <>
+      <StyledTitle>Settings</StyledTitle>
+      <SettingsControl />
+    </>
   );
 };
 

@@ -1,17 +1,18 @@
+import { HOME_PAGE_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants/router';
 import React from 'react';
 
 
-import { StyledNav, StyledWrapperLink, StyledLinkElem } from './components';
+import { StyledNav, StyledWrapperLink, StyledLinkElem, StyledTitle } from './components';
 
 const NavBar = () => {
   return (
     <StyledNav>
-      <h2 style={{ fontSize: '18px', color: '#fff', fontWeight: 400 }}>Calculator App</h2>
+      <StyledTitle>Calculator App</StyledTitle>
       <StyledWrapperLink>
-        <StyledLinkElem exact to="/">
+        <StyledLinkElem exact to={HOME_PAGE_ROUTE}>
           Home    
         </StyledLinkElem>
-        <StyledLinkElem to="/settings">
+        <StyledLinkElem to={SETTINGS_PAGE_ROUTE}>
           Settings
         </StyledLinkElem>
       </StyledWrapperLink>
