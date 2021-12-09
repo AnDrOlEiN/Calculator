@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTitle = styled.h1`
-  color: ${props => props.theme.colors.dark};
+export const StyledFlex = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

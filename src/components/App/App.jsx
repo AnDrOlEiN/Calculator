@@ -14,11 +14,11 @@ const App = () => (
   <Suspense fallback={<Loading />}>
     <StyledApp>
       <Header />
-      <main style={{ padding: '20px 0px' }}>
+      <main style={{ padding: '15px 0px' }}>
         <Container>
           <Switch>
             <Route exact path={HOME_PAGE_ROUTE} component={HomePage} />
-            <Route path={SETTINGS_PAGE_ROUTE} component={SettingsPage} />
+            <Route exact path={SETTINGS_PAGE_ROUTE} component={SettingsPage} />
             <Redirect to={HOME_PAGE_ROUTE} />
           </Switch>
         </Container>

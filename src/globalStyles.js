@@ -14,7 +14,6 @@ export default createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
 
-  p,
   h1,
   h2,
   h3,

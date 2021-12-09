@@ -1,13 +1,16 @@
+import Calculator from '@/components/Calculator/Calculator';
+import History from '@/components/History/History';
 import React from 'react';
-import Loading from '../../components/Loading/Loading';
 
-import { StyledTitle } from './components';
+import { StyledFlex } from './components';
 
 const Home = () => {
   return (
     <>
-      <StyledTitle>Welcome Home</StyledTitle>
-      <Loading />
+      <StyledFlex>
+        <Calculator />
+        <History />
+      </StyledFlex>
     </>
   )
 }
