@@ -19,7 +19,7 @@
       }
     ],
     "no-unused-vars": "warn",
-    "no-return-assign":"warn",
+    "no-return-assign":"off",
     "operator-linebreak": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-closing-tag-location": 2,

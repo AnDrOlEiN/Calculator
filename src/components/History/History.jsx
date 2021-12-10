@@ -1,18 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { StyledWrapper, StyledHistory, StyledItem } from './components';
 
 const History = () => {
+  const { savedExpression } = useSelector((state) => state.calculator);
+
+  console.log(savedExpression);
+
   return (
     <StyledWrapper>
       <h2 style={{ textAlign: 'center', fontSize: 18 }}>History</h2>
       <StyledHistory>
         <ul style={{ marginBottom: 0 }}>
-          <StyledItem>100*2</StyledItem>
-          <StyledItem>4900/123</StyledItem>
-
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, esse quos ea nulla corrupti recusandae impedit, voluptates necessitatibus dolor voluptatibus, cupiditate sit. Quaerat debitis voluptates dolorem soluta sint iste facere.
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, esse quos ea nulla corrupti recusandae impedit, voluptates necessitatibus dolor voluptatibus, cupiditate sit. Quaerat debitis voluptates dolorem soluta sint iste facere.
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, esse quos ea nulla corrupti recusandae impedit, voluptates necessitatibus dolor voluptatibus, cupiditate sit. Quaerat debitis voluptates dolorem soluta sint iste facere.
+          {savedExpression.map((expression, index) => {
+            return expression ? <StyledItem key={index}>{expression}</StyledItem> : null;
+          })}
         </ul>
       </StyledHistory>
     </StyledWrapper>

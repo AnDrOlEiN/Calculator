@@ -11,6 +11,7 @@ export const StyledKeypad = styled.div`
 
 export const StyledButton = styled.button`
   border: 1px solid #505050;
+  user-select: none;
   outline: 0;
   border-radius: 10px;
   font-size: 32px;

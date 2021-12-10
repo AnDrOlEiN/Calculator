@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 import { BTNS_LIST, BTNS_OPERATORS_LIST } from '@/constants/keypad';
 import { StyledKeypad, StyledButton } from './components';
 import { useDispatch } from 'react-redux';
-import { setSavedNumber } from '@/store/calculateReducer';
+import { setSavedExpression } from '@/store/calculateReducer';
 import PropTypes from 'prop-types';
-import { MathimaticOperation } from '@/utils/MathimaticOperation';
+import { getResultExpression } from '@/utils/getResultExpression';
 import { message } from 'antd';
 
 const Keypad = ({ calcValue, setCalcValue }) => {
   const dispatch = useDispatch();
 
-  // const prevValue = useRef('');
   const [prevValue, setPrevValue] = useState('');
 
   const setNumbersToInput = (value) => {
-    if (checkLength()) {
+    if (checkExpressionLength()) {
       message.error('Максимально допустимая длина строки!');
       return;
     }
@@ -23,32 +22,41 @@ const Keypad = ({ calcValue, setCalcValue }) => {
     setPrevValue(value);
   }
 
+  const addDot = (value) => {
+    if (!calcValue.includes(value)) {
+      const newCalcValue = calcValue.replace(/[.]/g, '');
+      setCalcValue(newCalcValue + value);
+    }
+  };
+
   const addOperator = (value) => {
-    if (checkLength()) {
+    if (checkExpressionLength()) {
       message.error('Максимально допустимая длина строки!');
       return;
     }
 
     if (BTNS_OPERATORS_LIST.includes(prevValue)) {
-      const newCalcValue = calcValue.replace(/[ , +,*,/,-]/g, '');
-      setCalcValue(newCalcValue + " " + value + " ");
+      const newCalcValue = calcValue.replace(/[ ,+,*,/,-]/g, '');
+      setCalcValue(`${newCalcValue} ${value} `);
       return;
     }
 
-    const expressionLength = calcValue.split(' ').length;
-    
-    if (expressionLength >= 3) {
-      setCalcValue((prev) => String(MathimaticOperation(prev)) + " " + value + " ");
-    } else {
-      setCalcValue((prev) => prev + " " + value + " ");
-    }
+    // Варик с обновлением строки
+    // const expressionLength = calcValue.split(' ').length;
+    // if (expressionLength >= 3) {
+    //   setCalcValue((prev) => String(getResultExpression(prev)) + " " + value + " ");
+    // } else {
+    setCalcValue((prev) => `${prev} ${value} `);
+    // }
 
     setPrevValue(value);
   }
 
   const setResult = () => {
-    setCalcValue(String(MathimaticOperation(calcValue)));
-    dispatch(setSavedNumber(String(MathimaticOperation(calcValue))));
+    setCalcValue(getResultExpression(calcValue).toString());
+
+    if (calcValue === '0') return;
+    dispatch(setSavedExpression(calcValue));
   }
 
   const resetValue = () => {
@@ -56,10 +64,12 @@ const Keypad = ({ calcValue, setCalcValue }) => {
   };
 
   const clearValue = () => {
+    if (calcValue.trim().includes('Infinity')) return setCalcValue('');
     setCalcValue(calcValue.trim().slice(0, -1));
   }
 
-  const checkLength = () => {
+  // возможно не понадобится => уточнить
+  const checkExpressionLength = () => {
     return calcValue.length >= 18;
   };
 
@@ -71,9 +81,9 @@ const Keypad = ({ calcValue, setCalcValue }) => {
       case 'C':
         clearValue();
         break;
-      // case '.': 
-      //   console.log(value);
-      //   break;
+      case '.': 
+        addDot(value);
+        break;
       // case '(': 
       //   console.log(value);
       //   break;
@@ -84,14 +94,8 @@ const Keypad = ({ calcValue, setCalcValue }) => {
         setResult();
         break;
       case '+':
-        addOperator(value);
-        break;
       case '-':
-        addOperator(value);
-        break;
       case '*':
-        addOperator(value);
-        break;
       case '/':
         addOperator(value);
         break;

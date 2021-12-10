@@ -5,8 +5,7 @@ import { StyledDisplay } from './components';
 const Display = ({ calcValue }) => {
   return (
     <>
-      <StyledDisplay value={calcValue} readOnly placeholder={0}
-                     maxLength={18} />
+      <StyledDisplay value={calcValue} readOnly placeholder={0} />
     </>
   );
 };
