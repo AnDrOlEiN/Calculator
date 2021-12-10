@@ -1,88 +1,64 @@
-export const BTN_ACTIONS = {
-  ADD: 'ADD',
-  CALC: 'CALC',
-  DELETE: 'DELETE',
-}
+export const BTNS_OPERATORS_LIST = ['+', '-', '*', '/', '='];
 
 export const BTNS_LIST = [
   {
-      display: 'C',
-      action: BTN_ACTIONS.DELETE,
+    name: 'C',
   },
   {
-      display: '7',
-      action: BTN_ACTIONS.ADD,
+    name: '7',
   },
   {
-      display: '8',
-      action: BTN_ACTIONS.ADD,
+    name: '8',
   },
   {
-      display: '9',
-      action: BTN_ACTIONS.ADD,
+    name: '9',
   },
   {
-      display: 'x',
-      action: BTN_ACTIONS.ADD,
+    name: '*',
   },
   {
-      display: '-',
-      action: BTN_ACTIONS.ADD,
+    name: '-',
   },
   {
-      display: '4',
-      action: BTN_ACTIONS.ADD,
+    name: '4',
   },
   {
-      display: '5',
-      action: BTN_ACTIONS.ADD,
+    name: '5',
   },
   {
-      display: '6',
-      action: BTN_ACTIONS.ADD,
+    name: '6',
   },
   {
-      display: '/',
-      action: BTN_ACTIONS.ADD,
+    name: '/',
   },
   {
-      display: '+',
-      action: BTN_ACTIONS.ADD,
+    name: '+',
   },
   {
-      display: '1',
-      action: BTN_ACTIONS.ADD,
+    name: '1',
   },
   {
-      display: '2',
-      action: BTN_ACTIONS.ADD,
+    name: '2',
   },
   {
-      display: '3',
-      action: BTN_ACTIONS.ADD,
+    name: '3',
   },
   {
-      display: '=',
-      action: BTN_ACTIONS.CALC,
+    name: '=',
   },
   {
-      display: '.',
-      action: BTN_ACTIONS.ADD,
+    name: '.',
   },
   {
-      display: '(',
-      action: BTN_ACTIONS.ADD,
+    name: '(',
   },
   {
-      display: '0',
-      action: BTN_ACTIONS.ADD,
+    name: '0',
   },
   {
-      display: ')',
-      action: BTN_ACTIONS.ADD,
+    name: ')',
   },
   {
-    display: 'CE',
-    action: BTN_ACTIONS.DELETE,
+    name: 'CE',
   },
 ];

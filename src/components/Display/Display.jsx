@@ -1,14 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyledDisplay } from './components';
 
-const Display = () => {
+const Display = ({ calcValue }) => {
   return (
     <>
-      <StyledDisplay>
-        4500.233
-      </StyledDisplay>
+      <StyledDisplay value={calcValue} readOnly placeholder={0}
+                     maxLength={18} />
     </>
   );
 };
+
+Display.propTypes = {
+  calcValue: PropTypes.string,
+}
 
 export default Display;
