@@ -12,13 +12,20 @@ const Keypad = ({ calcValue, setCalcValue }) => {
 
   const [prevValue, setPrevValue] = useState('');
 
-  const setNumbersToInput = (value) => {
+  const addNumbersToInput = (value) => {
     if (checkExpressionLength()) {
       message.error('Максимально допустимая длина строки!');
       return;
     }
 
-    setCalcValue((prev) => prev + value);
+    const [firstElementExpression] = calcValue.split('');
+
+    if (firstElementExpression === '0') {
+      setCalcValue(value);
+    } else {
+      setCalcValue((prev) => prev + value);
+    }
+
     setPrevValue(value);
   }
 
@@ -103,7 +110,7 @@ const Keypad = ({ calcValue, setCalcValue }) => {
         addOperator(value);
         break;
       default:
-        setNumbersToInput(value);
+        addNumbersToInput(value);
     }
 }
 
