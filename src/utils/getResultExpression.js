@@ -1,3 +1,5 @@
+import { BTN_ACTIONS } from "@/constants/keypad";
+
 export const getResultExpression = (str) => {
   const arrayOfOperators = str.split(' ');
 
@@ -9,13 +11,13 @@ export const getResultExpression = (str) => {
     console.log(sum, elem, index, 'sdsd');
 
     switch(elem) {
-      case '+':
+      case BTN_ACTIONS.Plus:
         return sum += Number(arrayOfOperators[index + 1]);
-      case '-':
+      case BTN_ACTIONS.Minus:
         return sum -= Number(arrayOfOperators[index + 1]);
-      case '*':
+      case BTN_ACTIONS.Multiply:
         return sum *= Number(arrayOfOperators[index + 1]);
-      case '/':
+      case BTN_ACTIONS.Divide:
         return sum /= Number(arrayOfOperators[index + 1]);
       default:
         return sum;

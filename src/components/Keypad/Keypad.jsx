@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BTNS_LIST, BTNS_OPERATORS_LIST } from '@/constants/keypad';
+import { BTN_LIST, BTN_OPERATORS_LIST, BTN_ACTIONS } from '@/constants/keypad';
 import { StyledKeypad, StyledButton } from './components';
 import { useDispatch } from 'react-redux';
 import { setSavedExpression } from '@/store/calculateReducer';
@@ -35,7 +35,7 @@ const Keypad = ({ calcValue, setCalcValue }) => {
       return;
     }
 
-    if (BTNS_OPERATORS_LIST.includes(prevValue)) {
+    if (BTN_OPERATORS_LIST.includes(prevValue)) {
       const newCalcValue = calcValue.replace(/[ ,+,*,/,-]/g, '');
       setCalcValue(`${newCalcValue} ${value} `);
       return;
@@ -64,7 +64,7 @@ const Keypad = ({ calcValue, setCalcValue }) => {
   };
 
   const clearValue = () => {
-    if (calcValue.trim().includes('Infinity')) return setCalcValue('');
+    if (calcValue.trim().includes(BTN_ACTIONS.Infinity)) return setCalcValue('');
     setCalcValue(calcValue.trim().slice(0, -1));
   }
 
@@ -75,13 +75,13 @@ const Keypad = ({ calcValue, setCalcValue }) => {
 
   const chooseAction = (value) => {
     switch(value){
-      case 'CE':
+      case BTN_ACTIONS.CE:
         resetValue();
         break;
-      case 'C':
+      case BTN_ACTIONS.C:
         clearValue();
         break;
-      case '.': 
+      case BTN_ACTIONS.Dot: 
         addDot(value);
         break;
       // case '(': 
@@ -90,13 +90,13 @@ const Keypad = ({ calcValue, setCalcValue }) => {
       // case ')': 
       //   console.log(value);
       //   break;
-      case '=':
+      case BTN_ACTIONS.Equals:
         setResult();
         break;
-      case '+':
-      case '-':
-      case '*':
-      case '/':
+      case BTN_ACTIONS.Plus:
+      case BTN_ACTIONS.Minus:
+      case BTN_ACTIONS.Multiply:
+      case BTN_ACTIONS.Divide:
         addOperator(value);
         break;
       default:
@@ -107,7 +107,7 @@ const Keypad = ({ calcValue, setCalcValue }) => {
   return (
     <StyledKeypad>
       {
-        BTNS_LIST.map((btn, index) => (
+        BTN_LIST.map((btn, index) => (
           <StyledButton
             key={index}
             onClick={(e) => chooseAction(e.target.textContent)}

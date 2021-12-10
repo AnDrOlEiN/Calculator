@@ -1,6 +1,20 @@
-export const BTNS_OPERATORS_LIST = ['+', '-', '*', '/', '='];
+export const BTN_OPERATORS_LIST = ['+', '-', '*', '/', '='];
 
-export const BTNS_LIST = [
+export const BTN_ACTIONS = {
+  'C': 'C',
+  'CE': 'CE',
+  'Plus': '+',
+  'Minus': '-',
+  'Divide': '/',
+  'Multiply': '*',
+  'Equals': '=',
+  'LeftBracket': '(',
+  'RightBracket': ')',
+  'Dot': '.',
+  'Infinity': 'Infinity',
+}
+
+export const BTN_LIST = [
   {
     name: 'C',
   },
