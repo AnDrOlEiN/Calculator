@@ -11,9 +11,9 @@ const HomePage = lazy(() => import('@/pages/Home/Home'));
 const SettingsPage = lazy(() => import('@/pages/Settings/Settings'));
 
 const App = () => (
-  <Suspense fallback={<Loading />}>
-    <StyledApp>
-      <Header />
+  <StyledApp>
+    <Header />
+    <Suspense fallback={<Loading />}>
       <main style={{ padding: '15px 0px' }}>
         <Container>
           <Switch>
@@ -23,8 +23,9 @@ const App = () => (
           </Switch>
         </Container>
       </main>
-    </StyledApp>
-  </Suspense>
+    </Suspense>
+
+  </StyledApp>
 
 )
 
