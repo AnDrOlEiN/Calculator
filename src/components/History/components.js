@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
-  border-left: 1px solid #505050;
+  border-left: 2px solid #505050;
   padding-bottom: 25px;
   max-width: 230px;
   width: 100%;
