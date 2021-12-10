@@ -1,13 +1,17 @@
 import React from 'react';
 import { Space, Select, Button } from 'antd';
+import { useDispatch } from 'react-redux';
+import { clearExpression } from '@/store/calculateReducer';
 
 const SettingsControl = () => {
+  const dispatch = useDispatch();
+
   const handleChangeTheme = (value, option) => {
     console.log(value, option); // кидать в стор
   };
 
   const handleClearHistory = () => {
-    console.log('clear all history'); // обнулять массив с историей
+    dispatch(clearExpression([]));
   }
 
   return (

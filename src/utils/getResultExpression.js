@@ -25,5 +25,5 @@ export const getResultExpression = (str) => {
   }, 0);
 
   const result = (+resultExpression % 2 === 0) ? resultExpression : resultExpression.toFixed(3);
-  return result;
+  return result.toString();
 }

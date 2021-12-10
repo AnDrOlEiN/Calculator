@@ -1,14 +1,16 @@
-import { ACTION_SAVED_EXPRESSION, ACTION_SAVED_NUMBER } from "@/constants/actions";
+import { ACTION_ADD_EXPRESSION, ACTION_CLEAR_EXPRESSION, ACTION_SAVED_NUMBER } from "@/constants/actions";
 
 const initialState = {
-  savedExpression: [],
-  savedNumber: '',
+  expressions: [],
+  savedNumber: '', // удалить
 };
 
 export const calculateReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_SAVED_EXPRESSION:
-      return { ...state, savedExpression: [...state.savedExpression, action.payload] };
+    case ACTION_ADD_EXPRESSION:
+      return { ...state, expressions: [...state.expressions, action.payload] };
+    case ACTION_CLEAR_EXPRESSION:
+      return { ...state, expressions: action.payload };
     case ACTION_SAVED_NUMBER:
       return { ...state, savedNumber: action.payload};
     default:
@@ -17,8 +19,13 @@ export const calculateReducer = (state = initialState, action) => {
 };
 
 
-export const setSavedExpression = (payload) => ({
-  type: ACTION_SAVED_EXPRESSION,
+export const addExpression = (payload) => ({
+  type: ACTION_ADD_EXPRESSION,
+  payload,
+});
+
+export const clearExpression = (payload) => ({
+  type: ACTION_CLEAR_EXPRESSION,
   payload,
 });
 

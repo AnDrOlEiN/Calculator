@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BTN_LIST, BTN_OPERATORS_LIST, BTN_ACTIONS } from '@/constants/keypad';
 import { StyledKeypad, StyledButton } from './components';
 import { useDispatch } from 'react-redux';
-import { setSavedExpression } from '@/store/calculateReducer';
+import { addExpression } from '@/store/calculateReducer';
 import PropTypes from 'prop-types';
 import { getResultExpression } from '@/utils/getResultExpression';
 import { message } from 'antd';
@@ -53,10 +53,11 @@ const Keypad = ({ calcValue, setCalcValue }) => {
   }
 
   const setResult = () => {
-    setCalcValue(getResultExpression(calcValue).toString());
+    setCalcValue(getResultExpression(calcValue));
 
     if (calcValue === '0') return;
-    dispatch(setSavedExpression(calcValue));
+
+    dispatch(addExpression(calcValue));
   }
 
   const resetValue = () => {
@@ -65,7 +66,9 @@ const Keypad = ({ calcValue, setCalcValue }) => {
 
   const clearValue = () => {
     if (calcValue.trim().includes(BTN_ACTIONS.Infinity)) return setCalcValue('');
-    setCalcValue(calcValue.trim().slice(0, -1));
+
+    const newCalcValue = calcValue.trim().slice(0, -1);
+    setCalcValue(newCalcValue);
   }
 
   // возможно не понадобится => уточнить
