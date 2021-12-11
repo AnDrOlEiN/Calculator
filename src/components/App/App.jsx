@@ -6,19 +6,14 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { HOME_PAGE_ROUTE, SETTINGS_PAGE_ROUTE } from '@/constants/router';
 import Loading from '../Loading/Loading';
 import { StyledApp, StyledMain } from './components';
+import { useSelector } from 'react-redux';
 
 const HomePage = lazy(() => import('@/pages/Home/Home'));
 const SettingsPage = lazy(() => import('@/pages/Settings/Settings'));
 
-const theme = {
-  colors: {
-    light: '#6a6b7b',
-    colored: 'red',
-    dark: '#000000',
-  },
-};
-
 const App = () => {
+  const { theme } = useSelector((state) => state.theme);
+
   return (
     <ThemeProvider theme={theme}>
       <StyledApp>

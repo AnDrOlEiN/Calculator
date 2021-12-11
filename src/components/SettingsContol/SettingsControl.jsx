@@ -1,13 +1,19 @@
 import React from 'react';
 import { Space, Select, Button } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearExpression } from '@/store/calculateReducer';
+import { setTheme } from '@/store/themeReducer';
+import { coloredTheme, darkTheme, lightTheme, THEME_MODE } from '@/constants/themes';
 
 const SettingsControl = () => {
   const dispatch = useDispatch();
 
-  const handleChangeTheme = (value, option) => {
-    console.log(value, option); // кидать в стор
+  const { theme } = useSelector((state) => state.theme);
+
+  const handleChangeTheme = (value) => {
+    if (value === THEME_MODE.LIGHT) dispatch(setTheme(lightTheme));
+    if (value === THEME_MODE.DARK) dispatch(setTheme(darkTheme));
+    if (value === THEME_MODE.COLORED) dispatch(setTheme(coloredTheme));
   };
 
   const handleClearHistory = () => {
@@ -19,7 +25,7 @@ const SettingsControl = () => {
       <Space direction="vertical" size="middle">
         <div>
           <p style={{ marginBottom: 0 }}>Switch Theme:</p>
-          <Select defaultValue="Light" size="large" 
+          <Select defaultValue={theme.mode} size="large" 
                   style={{ width: 200 }} onChange={handleChangeTheme}>
             <Select.Option value="light">Light</Select.Option>
             <Select.Option value="colored">Colored</Select.Option>
