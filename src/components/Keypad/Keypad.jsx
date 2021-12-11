@@ -31,11 +31,15 @@ const Keypad = ({ calcValue, setCalcValue }) => {
   }
 
   const addDot = (value) => {
-    if (!calcValue.includes(value)) {
-      const newCalcValue = calcValue.replace(/[.]/g, '');
-      setCalcValue(newCalcValue + value);
+    if (!calcValue.endsWith(value)) {
+      setCalcValue((prev) => prev + value);
     }
+    setPrevValue(value);
   };
+
+  const addBrackets = (value) => {
+    console.log(value);
+  }
 
   const addOperator = (value) => {
     if (checkExpressionLength()) {
@@ -67,8 +71,13 @@ const Keypad = ({ calcValue, setCalcValue }) => {
 
     if (calcValue === '0') return;
 
-    setCalcValue(getResultExpression(calcValue));
+    const isValue = getResultExpression(calcValue);
+    if (isNaN(isValue)) {
+      message.error('An error in the expression!');
+      return;
+    }
 
+    setCalcValue(getResultExpression(calcValue));
     dispatch(addExpression(calcValue));
   }
 
@@ -99,12 +108,12 @@ const Keypad = ({ calcValue, setCalcValue }) => {
       case BTN_ACTIONS.Dot: 
         addDot(value);
         break;
-      // case '(': 
-      //   console.log(value);
-      //   break;
-      // case ')': 
-      //   console.log(value);
-      //   break;
+      case BTN_ACTIONS.LeftBracket: 
+        addBrackets(value);
+        break;
+      case BTN_ACTIONS.RightBracket: 
+        addBrackets(value);
+        break;
       case BTN_ACTIONS.Equals:
         setResult();
         break;
