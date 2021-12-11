@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const StyledWrapper = styled.div`
   border-left: 2px solid #505050;
   padding-bottom: 25px;
+  min-width: 230px;
   max-width: 230px;
-  width: 100%;
 `;
 
 export const StyledHistory = styled.div`

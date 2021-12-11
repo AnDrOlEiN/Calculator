@@ -1,8 +1,8 @@
 import { ACTION_SET_THEME } from "@/constants/actions";
-import { lightTheme } from "@/constants/themes";
+import { darkTheme } from "@/constants/themes";
 
 const initialState = {
-  theme: lightTheme,
+  theme: darkTheme,
 };
 
 export const themeReducer = (state = initialState, action) => {

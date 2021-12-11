@@ -20,11 +20,11 @@ export const StyledWrapperLink = styled.div`
   a {
     margin-left: 10px;
     margin-right: 10px;
-    color: #999999;
+    color: ${(props) => props.theme.PRIMARY_TEXT_HEADER_COLOR};
     font-size: 18px;
 
     &:hover {
-      color: #000;
+      color: ${(props) => props.theme.PRIMARY_TEXT_HOVER_COLOR};
     }
 
     &:last-child {
@@ -39,7 +39,7 @@ export const StyledLinkElem = styled(NavLink)`
     border-bottom: 2px solid #fff;
 
     &:hover {
-      color: #fff;
+      color: ${(props) => props.theme.PRIMARY_TEXT_HOVER_COLOR};
     }
   }
 `

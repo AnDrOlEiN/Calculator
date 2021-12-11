@@ -16,7 +16,8 @@ export const StyledButton = styled.button`
   border-radius: 10px;
   font-size: 32px;
   font-weight: 500;
-  color: #000;
+  color: ${(props) => props.theme.PRIMARY_BACKGROUND_COLOR};
+  background-color: ${(props) => props.theme.PRIMARY_BACKGROUND_HEADER_COLOR};
   cursor: pointer;
   height: 80px;
   transition: all .3s;

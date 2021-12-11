@@ -14,8 +14,10 @@ export const StyledDisplay = styled.input`
   align-items: center;
   flex-direction: row-reverse;
   width: 100%;
+  color: ${(props) => props.theme.SECONDARY_TEXT_COLOR};
+  background-color: ${(props) => props.theme.PRIMARY_BACKGROUND_COLOR};
 
   &::placeholder {
-    color: #000;
+    color: ${(props) => props.theme.SECONDARY_TEXT_COLOR};
   }
 `;
