@@ -21,7 +21,7 @@ const Keypad = ({ calcValue, setCalcValue }) => {
 
     const [firstElementExpression] = calcValue.split('');
 
-    if (firstElementExpression === '0') {
+    if (firstElementExpression === BTN_ACTIONS.Zero && !calcValue.includes(BTN_ACTIONS.Dot)) {
       setCalcValue(value);
     } else {
       setCalcValue((prev) => prev + value);
@@ -38,7 +38,14 @@ const Keypad = ({ calcValue, setCalcValue }) => {
   };
 
   const addBrackets = (value) => {
-    console.log(value);
+    setCalcValue((prev) => prev + value);
+
+    const expressionInBrackets = calcValue.split(/[()]/);
+    if (expressionInBrackets[1]) {
+      const resultExpressionInBrackets = getResultExpression(expressionInBrackets[1].trim());
+      const getValueWithoutBrackets = calcValue.split(BTN_ACTIONS.LeftBracket);
+      setCalcValue(getValueWithoutBrackets[0] + resultExpressionInBrackets);
+    }
   }
 
   const addOperator = (value) => {
@@ -69,7 +76,7 @@ const Keypad = ({ calcValue, setCalcValue }) => {
       return;
     }
 
-    if (calcValue === '0') return;
+    if (calcValue === BTN_ACTIONS.Zero) return;
 
     const isValue = getResultExpression(calcValue);
     if (isNaN(isValue)) {
@@ -92,9 +99,9 @@ const Keypad = ({ calcValue, setCalcValue }) => {
     setCalcValue(newCalcValue);
   }
 
-  // возможно не понадобится => уточнить
+  // возможно не понадобится => уточнить (20)
   const checkExpressionLength = () => {
-    return calcValue.length >= 18;
+    return calcValue.length >= 40;
   };
 
   const chooseAction = (value) => {

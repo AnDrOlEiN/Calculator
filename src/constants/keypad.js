@@ -12,6 +12,7 @@ export const BTN_ACTIONS = {
   'RightBracket': ')',
   'Dot': '.',
   'Infinity': 'Infinity',
+  'Zero': '0',
 }
 
 export const BTN_LIST = [

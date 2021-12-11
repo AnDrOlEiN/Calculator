@@ -1,4 +1,5 @@
 import { BTN_ACTIONS } from "@/constants/keypad";
+import { isInteger } from "./isInteger";
 
 export const getResultExpression = (str) => {
   const arrayOfOperators = str.split(' ');
@@ -7,8 +8,6 @@ export const getResultExpression = (str) => {
     if (index === 0 && Number(elem)) {
       sum = Number(elem);
     };
-
-    console.log(sum, elem, index, 'sdsd');
 
     switch(elem) {
       case BTN_ACTIONS.Plus:
@@ -24,6 +23,6 @@ export const getResultExpression = (str) => {
     }
   }, 0);
 
-  const result = (+resultExpression % 2 === 0) ? resultExpression : resultExpression.toFixed(3);
+  const result = isInteger(+resultExpression) ? resultExpression : resultExpression.toFixed(3);
   return result.toString();
 }
