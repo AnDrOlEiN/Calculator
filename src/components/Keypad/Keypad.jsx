@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { BTN_LIST, BTN_OPERATORS_LIST, BTN_ACTIONS } from '@/constants/keypad';
+import { BTN_LIST, BTN_ACTIONS } from '@/constants/keypad';
 import { StyledKeypad, StyledButton } from './components';
 import { useDispatch } from 'react-redux';
 import { addExpression } from '@/store/calculateReducer';
 import PropTypes from 'prop-types';
 import { getResultExpression } from '@/utils/getResultExpression';
 import { message } from 'antd';
+import { isOperatorsListIncludesValue } from '@/utils/isOperatorsListIncludesValue';
 
 const Keypad = ({ calcValue, setCalcValue }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Keypad = ({ calcValue, setCalcValue }) => {
 
   const addNumbersToInput = (value) => {
     if (checkExpressionLength()) {
-      message.error('Максимально допустимая длина строки!');
+      message.error('Maximum allowed line length!');
       return;
     }
 
@@ -38,11 +39,11 @@ const Keypad = ({ calcValue, setCalcValue }) => {
 
   const addOperator = (value) => {
     if (checkExpressionLength()) {
-      message.error('Максимально допустимая длина строки!');
+      message.error('Maximum allowed line length!');
       return;
     }
 
-    if (BTN_OPERATORS_LIST.includes(prevValue)) {
+    if (isOperatorsListIncludesValue(prevValue)) {
       const newCalcValue = calcValue.replace(/[ ,+,*,/,-]/g, '');
       setCalcValue(`${newCalcValue} ${value} `);
       return;
@@ -55,14 +56,18 @@ const Keypad = ({ calcValue, setCalcValue }) => {
     // } else {
     setCalcValue((prev) => `${prev} ${value} `);
     // }
-
     setPrevValue(value);
   }
 
   const setResult = () => {
-    setCalcValue(getResultExpression(calcValue));
+    if (isOperatorsListIncludesValue(prevValue)) {
+      message.error('Indicate the last value with which we will operate!');
+      return;
+    }
 
     if (calcValue === '0') return;
+
+    setCalcValue(getResultExpression(calcValue));
 
     dispatch(addExpression(calcValue));
   }
