@@ -3,7 +3,6 @@ import { Space, Select, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearExpression } from '@/store/calculateReducer';
 import { setTheme } from '@/store/themeReducer';
-import { coloredTheme, darkTheme, lightTheme, THEME_MODE } from '@/constants/themes';
 
 const SettingsControl = () => {
   const dispatch = useDispatch();
@@ -11,9 +10,8 @@ const SettingsControl = () => {
   const { theme } = useSelector((state) => state.theme);
 
   const handleChangeTheme = (value) => {
-    if (value === THEME_MODE.LIGHT) dispatch(setTheme(lightTheme));
-    if (value === THEME_MODE.DARK) dispatch(setTheme(darkTheme));
-    if (value === THEME_MODE.COLORED) dispatch(setTheme(coloredTheme));
+    sessionStorage.setItem('theme', value);
+    dispatch(setTheme(value));
   };
 
   const handleClearHistory = () => {
@@ -25,7 +23,7 @@ const SettingsControl = () => {
       <Space direction="vertical" size="middle">
         <div>
           <p style={{ marginBottom: 0 }}>Switch Theme:</p>
-          <Select defaultValue={theme.mode} size="large" 
+          <Select defaultValue={theme} size="large" 
                   style={{ width: 200 }} onChange={handleChangeTheme}>
             <Select.Option value="light">Light</Select.Option>
             <Select.Option value="colored">Colored</Select.Option>

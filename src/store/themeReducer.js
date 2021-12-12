@@ -1,8 +1,10 @@
 import { ACTION_SET_THEME } from "@/constants/actions";
-import { darkTheme } from "@/constants/themes";
+import { THEME_MODE } from "@/constants/themes";
+
+const themeFromLocalStorage = sessionStorage.getItem('theme');
 
 const initialState = {
-  theme: darkTheme,
+  theme: themeFromLocalStorage || THEME_MODE.DARK,
 };
 
 export const themeReducer = (state = initialState, action) => {
