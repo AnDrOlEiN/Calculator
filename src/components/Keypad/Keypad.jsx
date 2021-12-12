@@ -45,7 +45,10 @@ const Keypad = ({ calcValue, setCalcValue }) => {
   };
 
   const addBrackets = (value) => {
-    setCalcValue((prev) => prev + value);
+    if (!isOperatorsListIncludesValue(prevValue.trim()) && value === BTN_ACTIONS.LeftBracket) {
+      message.error('Place the operator before the bracket!');
+      return;
+    }
 
     const expressionInBrackets = calcValue.split(/[()]/);
 
@@ -53,6 +56,8 @@ const Keypad = ({ calcValue, setCalcValue }) => {
       const resultExpressionInBrackets = getResultExpression(expressionInBrackets[1].trim());
       const getValueWithoutBrackets = calcValue.split(BTN_ACTIONS.LeftBracket);
       setCalcValue(getValueWithoutBrackets[0] + resultExpressionInBrackets);
+    } else {
+      setCalcValue((prev) => prev + value);
     }
   }
 
