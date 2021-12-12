@@ -31,9 +31,16 @@ const Keypad = ({ calcValue, setCalcValue }) => {
   }
 
   const addDot = (value) => {
+    const { length, [length - 1]: lastElementExpression } =  calcValue.split(' ');
+
+    if (calcValue.includes(value) && lastElementExpression.includes(value)) {
+      return;
+    }
+
     if (!calcValue.endsWith(value)) {
       setCalcValue((prev) => prev + value);
     }
+
     setPrevValue(value);
   };
 
@@ -41,6 +48,7 @@ const Keypad = ({ calcValue, setCalcValue }) => {
     setCalcValue((prev) => prev + value);
 
     const expressionInBrackets = calcValue.split(/[()]/);
+
     if (expressionInBrackets[1]) {
       const resultExpressionInBrackets = getResultExpression(expressionInBrackets[1].trim());
       const getValueWithoutBrackets = calcValue.split(BTN_ACTIONS.LeftBracket);
